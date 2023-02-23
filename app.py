@@ -21,7 +21,7 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
-classifier = joblib.load('model.joblib')
+classifier = joblib.load('/home/gavingoh99/bithack-backend/model.joblib')
 vectorizer = TfidfVectorizer()
 
 class Postings(Resource):

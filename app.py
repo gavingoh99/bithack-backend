@@ -10,7 +10,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 
-client = pymongo.MongoClient("mongodb+srv://gavingoh99:gavingoh99@jobmatching.zovabv4.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient(host="mongodb+srv://gavingoh99:gavingoh99@jobmatching.zovabv4.mongodb.net/?retryWrites=true&w=majority", connectTimeoutMS=30000, socketTimeoutMS=None, connect=False, maxPoolsize=1)
 db = client.jobmatching
 applicants = db.applicants
 users = db.users
@@ -21,6 +21,7 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
+# classifier = joblib.load('model.joblib')
 classifier = joblib.load('/home/gavingoh99/bithack-backend/model.joblib')
 vectorizer = TfidfVectorizer()
 

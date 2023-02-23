@@ -8,9 +8,10 @@ from bson.objectid import ObjectId
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from os import getenv
 
 
-client = pymongo.MongoClient("mongodb+srv://gavingoh99:gavingoh99@jobmatching.zovabv4.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient(getenv('MONGODB_URI'))
 db = client.jobmatching
 applicants = db.applicants
 users = db.users

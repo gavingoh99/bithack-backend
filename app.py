@@ -54,7 +54,7 @@ class Postings(Resource):
         company_postings = company["postings"]
         company_postings.append(posting_id)
         companies.update_one({"username": username}, {"$set": {"postings": company_postings}})
-        return jsonify(job_title=job_title, posting_skills=posting_skills, suitable_candidates=suitable_candidates)
+        return jsonify(job_title=job_title, posting_skills=posting_skills, suitable_candidates=suitable_candidates, posting_id=str(posting_id))
 
 class PostingsQuery(Resource):
     def get(self, id):

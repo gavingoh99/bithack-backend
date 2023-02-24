@@ -133,7 +133,7 @@ class LoginApplicant(Resource):
         password = json_data["password"]
         curr_user = users.find_one({"username": username})
         if (curr_user != None and password == curr_user["password"]):
-            return jsonify(username=username, application=str(curr_user["application"]))
+            return jsonify(user=username, application=str(curr_user["application"]))
         else:
             abort(403, description="Wrong password or wrong username")
 
@@ -147,7 +147,7 @@ class LoginCompany(Resource):
             result = list()
             for i in range(len(curr_company["postings"])):
                 result.append(str(curr_company["postings"][i]))
-            return jsonify(username=username, postings=result)
+            return jsonify(user=username, postings=result)
         else:
             abort(403, description="Wrong password or wrong username")
 
